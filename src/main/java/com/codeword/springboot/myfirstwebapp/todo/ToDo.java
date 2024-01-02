@@ -2,9 +2,27 @@ package com.codeword.springboot.myfirstwebapp.todo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class ToDo {
+	
+	public ToDo() {
+		
+	}
+
+	@Id
+	@GeneratedValue
+	private int id;
+	private String userName;
+	
+	@Size(min=10, message= "Enter atleast 10 Characters")
+	private String description;
+	private LocalDate targetDate;
+	private boolean status;
 
 	public ToDo(int id, String userName, String description, LocalDate targetDate, boolean status) {
 		super();
@@ -15,15 +33,6 @@ public class ToDo {
 		this.status = status;
 		
 	}
-	
-	private int id;
-	private String userName;
-	
-	@Size(min=10, message= "Enter atleast 10 Characters")
-	private String description;
-	private LocalDate targetDate;
-	private boolean status;
-
 
 	public int getId() {
 		return id;
